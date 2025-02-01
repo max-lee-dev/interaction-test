@@ -16,7 +16,6 @@ const MainContainer = () => {
           <button className={"bg-green text-white font-extrabold text-xl px-6 p-2 rounded-lg"}>
             Add College
           </button>
-
         </SpringyPopoutBorder>
       </div>
      <CollegeList colleges={mockColleges}/>
