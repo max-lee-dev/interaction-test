@@ -9,7 +9,7 @@ type CollegeListProps = {
 }
 const CollegeList = ({colleges}: CollegeListProps) => {
   return (
-    <div className={"flex border-t-2  flex-col mt-8"}>
+    <div className={"flex border-t-2 border-black flex-col mt-8"}>
       {colleges.map((college) => (
         <div key={college.name}>
           {college.checked ? (

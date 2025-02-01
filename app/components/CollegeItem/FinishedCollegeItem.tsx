@@ -8,7 +8,7 @@ type FinishedCollegeItemProps = {
 
 const FinishedCollegeItem = ({college}: FinishedCollegeItemProps) => {
   return (
-    <div className={"border-b-2 w-[100%] py-4 p-2 text-start"}>
+    <div className={"border-b-2 border-black w-[100%] py-4 p-2 text-start"}>
       <div className={"flex flex-row justify-between"}>
         <div className={"text-xl text-gray-400 font-bold"}>
           {college.name}
@@ -17,7 +17,7 @@ const FinishedCollegeItem = ({college}: FinishedCollegeItemProps) => {
           </div>
 
         </div>
-        
+
       </div>
     </div>
 

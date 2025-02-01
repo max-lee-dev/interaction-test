@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type {Config} from "tailwindcss";
 
 export default {
   content: [
@@ -16,6 +16,7 @@ export default {
         yellow: "#ff8800",
         cyan: "#00E6E6",
         red: "#FF1F1F",
+        paper: "#FFF5E9",
         green: "#379848",
       },
     },
