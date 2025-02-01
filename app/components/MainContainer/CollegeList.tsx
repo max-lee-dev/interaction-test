@@ -7,7 +7,7 @@ import {College} from "@/app/utils/types";
 type CollegeListProps = {
   colleges: College[];
 }
-const CollegeList = ({ colleges = mockColleges }) => {
+const CollegeList = ({ colleges = mockColleges } : CollegeListProps) => {
   return (
       <div className={"flex flex-col mt-8"}>
         {colleges.map((college) => (

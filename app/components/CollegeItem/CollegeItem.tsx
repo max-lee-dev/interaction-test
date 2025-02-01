@@ -8,8 +8,8 @@ type CollegeItemProps = {
 }
 const CollegeItem = ({college} : CollegeItemProps) => {
   return (
-    <PopoutBorder className={"mt-8 w-[80%] h-20 bg-white p-6"}>
-      <div className={"p-2 text-2xl font-bold"}>
+    <PopoutBorder className={"mt-8 w-[80%] p-2 text-start"}>
+      <div className={"text-2xl font-bold"}>
         {college.name}
       </div>
     </PopoutBorder>
