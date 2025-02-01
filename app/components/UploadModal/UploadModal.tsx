@@ -1,7 +1,9 @@
 "use client";
 
 import {motion} from "framer-motion";
+import React, {useState} from "react";
 import SpringyPopoutBorder from "@/app/components/CustomUI/SpringyPopupBorder";
+import {GetChatResponse} from "@/app/utils/utils";
 
 interface UploadModalProps {
   isOpen: boolean;
@@ -9,6 +11,18 @@ interface UploadModalProps {
 }
 
 const UploadModal = ({isOpen, closeModal}: UploadModalProps) => {
+  const [inputValue, setInputValue] = useState("");
+  const handleSubmit = async () => {
+    // Handle the submit logic here
+    console.log("Submitted:", inputValue);
+    await GetChatResponse(inputValue).then((res) => {
+        console.log(res);
+      }
+    )
+    closeModal();
+  }
+
+
   return (
     <>
       {isOpen && (
@@ -45,12 +59,14 @@ const UploadModal = ({isOpen, closeModal}: UploadModalProps) => {
                 "
               >
                 <div className="text-2xl font-bold text-center mb-4">
-                  Upload Your College List
+                  Upload Your College Emails
                 </div>
                 <div className="text-center mb-4">
                   <input
                     type="text"
-                    placeholder="Enter your college list..."
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    placeholder="You still have an item that requires your attention in My Student Aid (MSA). Lo..."
                     className="
                       w-full
                       p-3
