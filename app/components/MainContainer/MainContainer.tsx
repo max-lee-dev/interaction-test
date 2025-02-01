@@ -6,11 +6,9 @@ import CollegeList from "@/app/components/MainContainer/CollegeList";
 import SpringyPopoutBorder from "@/app/components/CustomUI/SpringyPopupBorder";
 
 const MainContainer = () => {
+  // Sort by checked status first
   const sortedColleges = mockColleges.sort((a, b) => {
-    // Sort by checked status first
-    if (a.checked === b.checked) {
-      return 1;
-    }
+    return Number(a.checked) - Number(b.checked);
   });
 
 

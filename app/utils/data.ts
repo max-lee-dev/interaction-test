@@ -74,3 +74,20 @@ export const mockColleges: College[] = [
     checked: false,
   },
 ]
+
+export const mockEmails = [
+  {
+    content: "Carnegie Mellon Uni. Reminder: Take Action in My Student Aid\n" +
+      "Dear Max,\n" +
+      "\n" +
+      "You still have an item that requires your attention in My Student Aid (MSA). Log in to MSA",
+  },
+  {
+    content: "Binghamton Univ. Your FAFSA has been received\n Dear Max,\n" +
+      "\n" +
+      "Binghamton University has received your 2025-26 FAFSA. Thank you!\n" +
+      "\n" +
+      "This will allow us to review your eligibility for several types of federal financial aid including grants, work-study and student loans."
+  }
+
+]
