@@ -13,7 +13,7 @@ export default {
         foreground: "var(--foreground)",
         pink: "#FF3D71",
         blue: "#005FFF",
-        yellow: "#FFD500",
+        yellow: "#ff8800",
         cyan: "#00E6E6",
         red: "#FF1F1F",
         green: "#379848",
