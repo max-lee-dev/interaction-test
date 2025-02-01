@@ -1,8 +1,7 @@
-"use client"
+"use client";
 
 import {motion} from "framer-motion";
 import SpringyPopoutBorder from "@/app/components/CustomUI/SpringyPopupBorder";
-
 
 interface UploadModalProps {
   isOpen: boolean;
@@ -49,17 +48,35 @@ const UploadModal = ({isOpen, closeModal}: UploadModalProps) => {
                   Upload Your College List
                 </div>
                 <div className="text-center mb-4">
-                  <input type="text"/>
+                  <input
+                    type="text"
+                    placeholder="Enter your college list..."
+                    className="
+                      w-full
+                      p-3
+                      border-2
+                      border-black
+                      rounded-lg
+                      bg-white
+                      shadow-[4px_4px_0px_0px_#000]
+                      text-lg
+                      focus:outline-none
+                      focus:ring-2
+                      focus:ring-black
+                      transition-all
+                    "
+                  />
                 </div>
                 <div className="text-center">
-                  <SpringyPopoutBorder
-                    className="bg-pink text-white font-extrabold text-xl px-6 py-2 rounded-lg cursor-pointer"
-                    onClick={closeModal}>
-                    Upload
-                  </SpringyPopoutBorder>
+                  <button onClick={closeModal}>
+                    <SpringyPopoutBorder
+                      className="bg-pink text-white font-extrabold text-xl px-6 py-2 rounded-lg cursor-pointer"
+
+                    >
+                      Upload
+                    </SpringyPopoutBorder>
+                  </button>
                 </div>
-
-
               </motion.div>
             </div>
           </div>
