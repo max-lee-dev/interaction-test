@@ -1,6 +1,6 @@
 export type College = {
   name: string;
-  location?: string;
+  location: string;
   rank?: number;
   acceptanceRate?: number;
   tuition?: number;

@@ -15,7 +15,7 @@ export async function GetChatResponse(message: string): Promise<string> {
   Here are the emails:
   ${message}
   
-  Provide the response strictly as a valid JSON array.`;
+  Provide the response strictly as a valid JSON array and dont add apostrophes to indicate code. just give the plain json. Don't abbreivate colleges, write their full entire name. One you have a good guess at which college it is, write the entire name with University in the json`;
 
   try {
     const {text} = await generateText({
@@ -23,7 +23,7 @@ export async function GetChatResponse(message: string): Promise<string> {
       prompt: prompt
     });
 
-    return text;
+    return JSON.parse(text);
   } catch (error) {
     console.error("Error generating response:", error);
     return "Sorry, I couldn't generate a response.";

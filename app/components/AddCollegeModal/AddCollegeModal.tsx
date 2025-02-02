@@ -3,29 +3,29 @@
 import {motion} from "framer-motion";
 import React, {useState} from "react";
 import SpringyPopoutBorder from "@/app/components/CustomUI/SpringyPopupBorder";
-import {GetChatResponse} from "@/app/utils/utils";
+import {addCollege} from "@/app/utils/firestoreUtils";
+import {College} from "@/app/utils/types";
 
-interface UploadModalProps {
+interface AddCollegeProps {
   isOpen: boolean;
   closeModal: () => void;
 }
 
-const UploadModal = ({isOpen, closeModal}: UploadModalProps) => {
-  const [inputValue, setInputValue] = useState("");
+const AddCollegeModal = ({isOpen, closeModal}: AddCollegeProps) => {
+  const [name, setName] = useState("");
+  const [location, setLocation] = useState("");
   const handleSubmit = async () => {
-    // Handle the submit logic here
-    console.log("Submitted:", inputValue);
-    await GetChatResponse(inputValue).then((res) => {
-        JSON.stringify(res);
-        for (let i = 0; i < res.length; i++) {
-          console.log(res[i]);
-        }
+    const college: College = {
+      name: name,
+      location: location,
+      checked: false,
+    }
+    await addCollege(college).then((res) => {
+        console.log(res);
         closeModal();
       }
     )
-
   }
-
 
   return (
     <>
@@ -68,9 +68,31 @@ const UploadModal = ({isOpen, closeModal}: UploadModalProps) => {
                 <div className="text-center mb-4">
                   <input
                     type="text"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    placeholder="You still have an item that requires your attention in My Student Aid (MSA). Lo..."
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Stanford University"
+                    className="
+                      w-full
+                      p-3
+                      border-2
+                      border-black
+                      rounded-lg
+                      bg-white
+                      shadow-[4px_4px_0px_0px_#000]
+                      text-lg
+                      focus:outline-none
+                      focus:ring-2
+                      focus:ring-black
+                      transition-all
+                    "
+                  />
+                </div>
+                <div className="text-center mb-4">
+                  <input
+                    type="text"
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
+                    placeholder="Stanford, CA"
                     className="
                       w-full
                       p-3
@@ -106,4 +128,4 @@ const UploadModal = ({isOpen, closeModal}: UploadModalProps) => {
   );
 };
 
-export default UploadModal;
+export default AddCollegeModal;

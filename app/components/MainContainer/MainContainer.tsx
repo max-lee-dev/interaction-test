@@ -6,14 +6,14 @@ import {mockColleges} from "@/app/utils/data";
 import CollegeList from "@/app/components/MainContainer/CollegeList";
 import SpringyPopoutBorder from "@/app/components/CustomUI/SpringyPopupBorder";
 import UploadModal from "@/app/components/UploadModal/UploadModal";
+import AddCollegeModal from "@/app/components/AddCollegeModal/AddCollegeModal";
 
 const MainContainer = () => {
   // Sort by checked status first
   const sortedColleges = mockColleges.sort((a, b) => {
     return Number(a.checked) - Number(b.checked);
   });
-
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // can only have one open at a time so use same is fine
   const closeModal = () => {
     setIsOpen(false);
   }
@@ -46,6 +46,7 @@ const MainContainer = () => {
       </div>
       <CollegeList colleges={sortedColleges}/>
       <UploadModal isOpen={isOpen} closeModal={closeModal}/>
+      <AddCollegeModal isOpen={isOpen} closeModal={closeModal}/>
     </PopoutBorder>
   );
 };
