@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "mocktest-946ec"
-  }
+    "default": "interac-d4f61",
+    "interaction": "interac-d4f61"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }

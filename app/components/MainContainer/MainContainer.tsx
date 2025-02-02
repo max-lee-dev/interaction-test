@@ -1,6 +1,7 @@
 "use client";
 import React, {useState} from 'react';
 
+
 import PopoutBorder from "@/app/components/CustomUI/PopoutBorder";
 import {mockColleges} from "@/app/utils/data";
 import CollegeList from "@/app/components/MainContainer/CollegeList";
@@ -13,12 +14,19 @@ const MainContainer = () => {
   const sortedColleges = mockColleges.sort((a, b) => {
     return Number(a.checked) - Number(b.checked);
   });
-  const [isOpen, setIsOpen] = useState(false); // can only have one open at a time so use same is fine
-  const closeModal = () => {
-    setIsOpen(false);
+  const [isUploadOpen, setIsUploadOpen] = useState(false);
+  const [isAddOpen, setIsAddOpen] = useState(false);
+  const closeUpload = () => {
+    setIsUploadOpen(false);
   }
-  const openModal = () => {
-    setIsOpen(true);
+  const closeAdd = () => {
+    setIsAddOpen(false);
+  }
+  const openUpload = () => {
+    setIsUploadOpen(true);
+  }
+  const openAdd = () => {
+    setIsAddOpen(true);
   }
 
 
@@ -29,13 +37,13 @@ const MainContainer = () => {
           Colleges
         </div>
         <div className={"flex flex-row space-x-2"}>
-          <button onClick={openModal}>
+          <button onClick={openUpload}>
             <SpringyPopoutBorder
               className={"bg-pink text-white font-extrabold text-xl px-6 text-center justify-center items-center flex flex-col rounded-lg"}>
               Upload
             </SpringyPopoutBorder>
           </button>
-          <button>
+          <button onClick={openAdd}>
             <SpringyPopoutBorder
               className={"bg-yellow text-white font-extrabold text-xl px-6 text-center justify-center items-center flex flex-col rounded-lg"}>
               Add College
@@ -45,8 +53,8 @@ const MainContainer = () => {
 
       </div>
       <CollegeList colleges={sortedColleges}/>
-      <UploadModal isOpen={isOpen} closeModal={closeModal}/>
-      <AddCollegeModal isOpen={isOpen} closeModal={closeModal}/>
+      <UploadModal isOpen={isUploadOpen} closeModal={closeUpload}/>
+      <AddCollegeModal isOpen={isAddOpen} closeModal={closeAdd}/>
     </PopoutBorder>
   );
 };
