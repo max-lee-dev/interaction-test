@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 
 
 import PopoutBorder from "@/app/components/CustomUI/PopoutBorder";
-import {mockColleges} from "@/app/utils/data";
 import CollegeList from "@/app/components/MainContainer/CollegeList";
 import SpringyPopoutBorder from "@/app/components/CustomUI/SpringyPopupBorder";
 import UploadModal from "@/app/components/UploadModal/UploadModal";
@@ -11,9 +10,6 @@ import AddCollegeModal from "@/app/components/AddCollegeModal/AddCollegeModal";
 
 const MainContainer = () => {
   // Sort by checked status first
-  const sortedColleges = mockColleges.sort((a, b) => {
-    return Number(a.checked) - Number(b.checked);
-  });
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [isAddOpen, setIsAddOpen] = useState(false);
   const closeUpload = () => {
@@ -52,7 +48,7 @@ const MainContainer = () => {
         </div>
 
       </div>
-      <CollegeList colleges={sortedColleges}/>
+      <CollegeList/>
       <UploadModal isOpen={isUploadOpen} closeModal={closeUpload}/>
       <AddCollegeModal isOpen={isAddOpen} closeModal={closeAdd}/>
     </PopoutBorder>
