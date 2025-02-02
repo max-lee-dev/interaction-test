@@ -4,6 +4,7 @@ import {motion} from "framer-motion";
 import React, {useState} from "react";
 import SpringyPopoutBorder from "@/app/components/CustomUI/SpringyPopupBorder";
 import {GetChatResponse} from "@/app/utils/utils";
+import {updateCollegeStatus} from "@/app/utils/firestoreUtils";
 
 interface UploadModalProps {
   isOpen: boolean;
@@ -15,14 +16,19 @@ const UploadModal = ({isOpen, closeModal}: UploadModalProps) => {
   const handleSubmit = async () => {
     // Handle the submit logic here
     console.log("Submitted:", inputValue);
-    await GetChatResponse(inputValue).then((res) => {
-        JSON.stringify(res);
-        for (let i = 0; i < res.length; i++) {
-          console.log(res[i]);
-        }
-        closeModal();
+    await GetChatResponse(inputValue).then((res: string) => {
+      console.log("Raw Response:", res); // Debugging
+
+      for (let i = 0; i < res.length; i++) {
+        const collegeObject = res[i]; // Each item is an object with one key-value pair
+
+        const collegeName = Object.keys(collegeObject)[0]; // Extract the college name
+        const financialAidStatus = collegeObject[collegeName]; // Get the status (true/false)
+        updateCollegeStatus(collegeName, financialAidStatus);
+
+
       }
-    )
+    });
 
   }
 

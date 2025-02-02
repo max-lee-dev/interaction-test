@@ -31,7 +31,7 @@ const MainContainer = () => {
 
 
   return (
-    <PopoutBorder className={"mt-8 w-[80%] sm:w-[50%] h-[80%] bg-paper p-6"}>
+    <PopoutBorder className={"mt-8 w-[80%] sm:w-[60%] md:w-[50%] h-[80%] bg-paper p-6"}>
       <div className={"flex flex-row justify-between"}>
         <div className={"p-2 text-4xl font-bold"}>
           Colleges
