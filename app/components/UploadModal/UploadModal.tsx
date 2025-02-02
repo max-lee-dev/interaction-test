@@ -16,14 +16,17 @@ const UploadModal = ({isOpen, closeModal}: UploadModalProps) => {
   const handleSubmit = async () => {
     // Handle the submit logic here
     console.log("Submitted:", inputValue);
-    await GetChatResponse(inputValue).then((res: string) => {
-      console.log("Raw Response:", res); // Debugging
+    await GetChatResponse(inputValue).then((res: Record<string, boolean>[]) => {
+
 
       for (let i = 0; i < res.length; i++) {
-        const collegeObject = res[i]; // Each item is an object with one key-value pair
 
-        const collegeName = Object.keys(collegeObject)[0]; // Extract the college name
-        const financialAidStatus = collegeObject[collegeName]; // Get the status (true/false)
+
+        const collegeObject: Record<string, boolean> = res[i];
+
+        const collegeName = Object.keys(collegeObject)[0];
+
+        const financialAidStatus: boolean = collegeObject[collegeName];
         updateCollegeStatus(collegeName, financialAidStatus);
 
 

@@ -7,7 +7,7 @@ const openai = createOpenAI({
 
 });
 
-export async function GetChatResponse(message: string): Promise<string> {
+export async function GetChatResponse(message: string): Promise<Record<string, boolean>[]> {
   const prompt = `
   You are a helpful assistant who reads student sample emails regarding financial aid. Your job is to determine whether or not the content suggests that a student has submitted their financial aid material or not. 
   I want you to give the result in a simple form as such: {[COLLEGE_NAME]: [FINANCIAL_AID_STATUS]}. The text will have multiple emails, so create a JSON array of maps. Use either true or false as the value.
@@ -26,6 +26,6 @@ export async function GetChatResponse(message: string): Promise<string> {
     return JSON.parse(text);
   } catch (error) {
     console.error("Error generating response:", error);
-    return "Sorry, I couldn't generate a response.";
+    return []; // Return an empty array on error
   }
 }

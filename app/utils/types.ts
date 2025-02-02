@@ -6,3 +6,4 @@ export type College = {
   tuition?: number;
   checked: boolean;
 }
+
