@@ -1,5 +1,6 @@
 import {createOpenAI} from '@ai-sdk/openai';
 import {generateText} from 'ai';
+import {CollegeResponseObject} from "@/app/utils/types";
 
 const openai = createOpenAI({
   apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY, // lowkey dunno how to put in backend oops
@@ -7,7 +8,7 @@ const openai = createOpenAI({
 
 });
 
-export async function GetChatResponse(message: string): Promise<Record<string, boolean>[]> {
+export async function GetChatResponse(message: string): Promise<CollegeResponseObject[]> {
   const prompt = `
   You are a helpful assistant who reads student sample emails regarding financial aid. Your job is to determine whether or not the content suggests that a student has submitted their financial aid material or not. 
   I want you to give the result in a simple form as such: {[COLLEGE_NAME]: [FINANCIAL_AID_STATUS]}. The text will have multiple emails, so create a JSON array of maps. Use either true or false as the value.

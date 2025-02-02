@@ -5,6 +5,7 @@ import React, {useState} from "react";
 import SpringyPopoutBorder from "@/app/components/CustomUI/SpringyPopupBorder";
 import {GetChatResponse} from "@/app/utils/utils";
 import {updateCollegeStatus} from "@/app/utils/firestoreUtils";
+import {CollegeResponseObject} from "@/app/utils/types";
 
 interface UploadModalProps {
   isOpen: boolean;
@@ -16,13 +17,13 @@ const UploadModal = ({isOpen, closeModal}: UploadModalProps) => {
   const handleSubmit = async () => {
     // Handle the submit logic here
     console.log("Submitted:", inputValue);
-    await GetChatResponse(inputValue).then((res: Record<string, boolean>[]) => {
+    await GetChatResponse(inputValue).then((res: CollegeResponseObject[]) => {
 
 
       for (let i = 0; i < res.length; i++) {
 
 
-        const collegeObject: Record<string, boolean> = res[i];
+        const collegeObject: CollegeResponseObject = res[i];
 
         const collegeName = Object.keys(collegeObject)[0];
 

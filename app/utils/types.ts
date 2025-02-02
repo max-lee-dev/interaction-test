@@ -7,3 +7,4 @@ export type College = {
   checked: boolean;
 }
 
+export type CollegeResponseObject = Record<string, boolean>
